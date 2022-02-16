@@ -50,7 +50,7 @@ export default {
   // 環境変数を読み込む
   privateRuntimeConfig: {
     apiKey: API_KEY,
-    // apiUrL: API_URL
+    apiUrL: API_URL
   },
   publicRuntimeConfig: {
     apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined
