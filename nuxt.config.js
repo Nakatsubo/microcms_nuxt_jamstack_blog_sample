@@ -48,12 +48,15 @@ export default {
   },
 
   // 環境変数を読み込む
+  // サーバーからのみ使用する環境変数
   privateRuntimeConfig: {
     apiKey: API_KEY,
     apiUrL: API_URL
   },
+  // クライアントとサーバーの両方で使用する環境変数
   publicRuntimeConfig: {
-    apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined
+    apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined,
+    apiUrl: process.env.NODE_ENV !== 'production' ? API_URL : undefined
   },
 
 }

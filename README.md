@@ -21,14 +21,18 @@ const { API_KEY, API_URL } = process.env;
 
 export default {
 
-// ...
+  // ...
 
+  // 環境変数を読み込む
+  // サーバーからのみ使用する環境変数
   privateRuntimeConfig: {
     apiKey: API_KEY,
-    // apiUrL: API_URL
+    apiUrL: API_URL
   },
+  // クライアントとサーバーの両方で使用する環境変数
   publicRuntimeConfig: {
-    apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined
+    apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined,
+    apiUrl: process.env.NODE_ENV !== 'production' ? API_URL : undefined
   },
 
 }
@@ -106,7 +110,7 @@ export default {
   async asyncData({ $config }) {
     const { data } = await axios
       .get(
-        'https://jmkvfdwrd4.microcms.io/api/v1/blog/',
+        $config.apiUrl,
         { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }}
     )
     return data;
@@ -124,7 +128,8 @@ microCMSの管理画面上で設定したコンテンツIDがURLとなる
   <main class="main">
     <h1 class="title">{{ title }}</h1>
     <p class="publishedAt">{{ publishedAt }}</p>
-    <div class="post" v-html="content"></div>
+    <p class="body">{{ body }}</p>
+    <!-- <div class="post" v-html="content"></div> -->
   </main>
 </template>
 
@@ -133,7 +138,7 @@ import axios from 'axios'
 export default {
   async asyncData({ params, $config }) {
     const { data } = await axios.get(
-      `https://jmkvfdwrd4.microcms.io/api/v1/blog/${params.slug}`,
+      `${$config.apiUrl}${params.slug}`,
       { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
       }
     )
@@ -143,7 +148,7 @@ export default {
   generate: {
     async routes( $config ) {
       const pages = await axios.get(
-        'https://jmkvfdwrd4.microcms.io/api/v1/blog/',
+        $config.apiUrl,
         { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }}
         )
         .then((res) =>
