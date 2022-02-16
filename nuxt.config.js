@@ -1,3 +1,6 @@
+// 環境変数を読み込む
+const { API_KEY, API_URL } = process.env;
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -40,5 +43,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  // 環境変数を読み込む
+  privateRuntimeConfig: {
+    apiKey: API_KEY,
+    // apiUrL: API_URL
+  },
+  publicRuntimeConfig: {
+    apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined
+  },
+  
 }
