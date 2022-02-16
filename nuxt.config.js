@@ -39,6 +39,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    // axios をインストール
+    "@nuxtjs/axios",
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -53,5 +55,5 @@ export default {
   publicRuntimeConfig: {
     apiKey: process.env.NODE_ENV !== 'production' ? API_KEY : undefined
   },
-  
+
 }

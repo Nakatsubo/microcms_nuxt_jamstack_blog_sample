@@ -31,3 +31,51 @@ export default {
 
 }
 ```
+
+## axios と sass をインストールする
+
+- node-sassをインストールしてしまうと、デプロイ時にエラーが発生する
+- sass-loaderのバージョン依存を解消しないと、デプロイ時にエラーが発生する
+
+[プリプロセッサ](https://nuxtjs.org/ja/docs/features/configuration/#%E3%83%97%E3%83%AA%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5)
+
+```
+// axios
+$ npm install -D @nuxtjs/axios
+
+// sass
+$ npm install -D sass sass-loader@10.1.1
+```
+
+### package.json
+
+```javascript
+{
+
+  // ...
+
+  "dependencies": {
+    // @nuxtjs/axios は　dependencies にインストールする
+    "@nuxtjs/axios": "^5.13.6",
+    "core-js": "^3.15.1",
+    "nuxt": "^2.15.7"
+  },
+  "devDependencies": {
+    "sass": "^1.49.7",
+    "sass-loader": "^10.1.1"
+  }
+}
+```
+
+### nuxt.config.js
+
+```javascript
+export default {
+
+  // ...
+  modules: [
+    "@nuxtjs/axios",
+  ],
+
+}
+```
