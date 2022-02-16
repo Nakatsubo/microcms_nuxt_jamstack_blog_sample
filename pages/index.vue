@@ -16,7 +16,7 @@ export default {
   async asyncData({ $config }) {
     const { data } = await axios
       .get(
-        $config.apiUrl,
+        'https://jmkvfdwrd4.microcms.io/api/v1/blog/',
         { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }}
     )
     return data;

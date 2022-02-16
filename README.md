@@ -110,7 +110,7 @@ export default {
   async asyncData({ $config }) {
     const { data } = await axios
       .get(
-        $config.apiUrl,
+        'https://jmkvfdwrd4.microcms.io/api/v1/blog/',
         { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }}
     )
     return data;
@@ -121,6 +121,8 @@ export default {
 
 ### pages/_slug/index.vue
 microCMSの管理画面上で設定したコンテンツIDがURLとなる
+
+**axios のget URLを環境変数にしているとバグる問題**😖
 
 ```html
 // $config に環境変数が入っている
@@ -138,7 +140,7 @@ import axios from 'axios'
 export default {
   async asyncData({ params, $config }) {
     const { data } = await axios.get(
-      `${$config.apiUrl}${params.slug}`,
+      `https://jmkvfdwrd4.microcms.io/api/v1/blog/${params.slug}`,
       { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
       }
     )
@@ -148,7 +150,7 @@ export default {
   generate: {
     async routes( $config ) {
       const pages = await axios.get(
-        $config.apiUrl,
+        'https://jmkvfdwrd4.microcms.io/api/v1/blog/',
         { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }}
         )
         .then((res) =>
@@ -205,4 +207,14 @@ export default {
   }
 }
 </style>
+```
+
+## Vueファイルを静的ファイルにビルドする
+~/dist/ 配下に静的ファイルが生成される
+
+```bash
+$ npm run generate
+$ npm start
+
+-> http://localhost:3000/
 ```

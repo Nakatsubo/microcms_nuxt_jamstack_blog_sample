@@ -13,7 +13,7 @@ import axios from 'axios'
 export default {
   async asyncData({ params, $config }) {
     const { data } = await axios.get(
-      `${$config.apiUrl}${params.slug}`,
+      `https://jmkvfdwrd4.microcms.io/api/v1/blog/${params.slug}`,
       { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
       }
     )
@@ -23,7 +23,7 @@ export default {
   generate: {
     async routes( $config ) {
       const pages = await axios.get(
-        $config.apiUrl,
+        'https://jmkvfdwrd4.microcms.io/api/v1/blog/',
         { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }}
         )
         .then((res) =>
