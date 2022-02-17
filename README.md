@@ -220,6 +220,7 @@ $ npm start
 ```
 
 ## Netlify でホスティングする
-あらかじめNetlifyに登録しGitHubとアカウント連携する
+- あらかじめNetlifyに登録しGitHubとアカウント連携する
+- **netlifyに環境変数を設定しておかないとデプロイでエラーが発生するので注意する**
 
 ## microCMSとNetlifyを連携する
