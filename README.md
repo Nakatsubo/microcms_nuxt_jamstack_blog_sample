@@ -218,3 +218,8 @@ $ npm start
 
 -> http://localhost:3000/
 ```
+
+## Netlify でホスティングする
+あらかじめNetlifyに登録しGitHubとアカウント連携する
+
+## microCMSとNetlifyを連携する
