@@ -3,6 +3,7 @@
   <main class="main">
     <h1 class="title">{{ title }}</h1>
     <p class="publishedAt">{{ publishedAt }}</p>
+    <!-- <p class="category">{{ category && category.name }}</p> -->
     <p class="body">{{ body }}</p>
     <!-- <div class="post" v-html="content"></div> -->
   </main>
@@ -17,6 +18,7 @@ export default {
       { headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
       }
     )
+    // console.log(data)
     return data
   },
   // 静的ファイルを出力するのに必要な設定

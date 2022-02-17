@@ -224,3 +224,12 @@ $ npm start
 - **netlifyに環境変数を設定しておかないとデプロイでエラーが発生するので注意する**
 
 ## microCMSとNetlifyを連携する
+
+### おまけ カテゴリの追加
+
+### pages/index.vue
+microCMSの設定が不明😖
+
+```html
+<p class="category">{{ category && category.name }}</p>
+```
